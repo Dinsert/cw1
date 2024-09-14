@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Main {
 
     public static Employee[] employees = {
@@ -24,11 +22,13 @@ public class Main {
         printAllFullNameEmployees(employees);
     }
 
-    public static Employee[] printAllEmployees(Employee[] employees) {
-        for (int i = 0; i < employees.length; i++) {
-            System.out.println(employees[i]);
+    public static Employee printAllEmployees(Employee[] employees) {
+        Employee employee = employees[0];
+        for (Employee i : employees) {
+            employee = i;
+            System.out.println(employee);
         }
-        return employees;
+        return employee;
     }
 
     public static int calculateSpendSalary(Employee[] employees) {
