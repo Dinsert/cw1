@@ -1,5 +1,8 @@
 public class Main {
 
+    public static double percent = 1d / 100;
+    public static int number = 55000;
+
     public static Employee[] employees = {
             new Employee("Ivanov1 Ivan1 Ivanovich1", 1, 10_000),
             new Employee("Ivanov2 Ivan2 Ivanovich2", 2, 20_000),
@@ -20,6 +23,15 @@ public class Main {
         findEmployeeMaxSalary(employees);
         calculateMiddleSalary(employees);
         printAllFullNameEmployees(employees);
+        calculateSpendSalaryIndex();
+        findEmployeeMinSalaryDepartment(employees[3].getDepartment());
+        findEmployeeMaxSalaryDepartment(employees[1].getDepartment());
+        calculateSpendSalaryDepartment(employees[0].getDepartment());
+        calculateMiddleSalaryDepartment(employees[4].getDepartment());
+        calculateSpendSalaryDepartmentIndex(employees[2].getDepartment());
+        printAllEmployeesDepartment(employees[0].getDepartment());
+        printAllEmployeesLessNumber(number);
+        printAllEmployeesMoreNumber(number);
     }
 
     public static Employee printAllEmployees(Employee[] employees) {
@@ -85,5 +97,112 @@ public class Main {
             System.out.println(i.getFullName());
         }
         return fullName;
+    }
+
+    public static double calculateSpendSalaryIndex() {
+        double sum = 0;
+        for (Employee i : employees) {
+            sum += i.getSalary();
+        }
+        sum += sum * percent;
+        System.out.println(sum);
+        return sum;
+    }
+
+    public static Employee findEmployeeMinSalaryDepartment(int department) {
+        Employee employee = employees[0];
+        int min = Integer.MAX_VALUE;
+        for (Employee i : employees) {
+            if (department == i.getDepartment() && min > i.getSalary()) {
+                min = i.getSalary();
+                employee = i;
+            }
+        }
+        System.out.println(employee);
+        return employee;
+    }
+
+    public static Employee findEmployeeMaxSalaryDepartment(int department) {
+        Employee employee = employees[0];
+        int max = Integer.MIN_VALUE;
+        for (Employee i : employees) {
+            if (department == i.getDepartment() && max < i.getSalary()) {
+                max = i.getSalary();
+                employee = i;
+            }
+        }
+        System.out.println(employee);
+        return employee;
+    }
+
+    public static int calculateSpendSalaryDepartment(int department) {
+
+        int sum = 0;
+        for (Employee i : employees) {
+            if (department == i.getDepartment())
+                sum += i.getSalary();
+        }
+        System.out.println(sum);
+        return sum;
+    }
+
+    public static double calculateMiddleSalaryDepartment(int department) {
+        double all = 0;
+        int count = 0;
+        for (Employee i : employees) {
+            if (department == i.getDepartment()) {
+                all += i.getSalary();
+                count++;
+            }
+        }
+        all /= count;
+        System.out.println(all);
+        return all;
+    }
+
+    public static double calculateSpendSalaryDepartmentIndex(int department) {
+
+        double sum = 0;
+        for (Employee i : employees) {
+            if (department == i.getDepartment()) {
+                sum += i.getSalary();
+            }
+        }
+        sum += sum * percent;
+        System.out.println(sum);
+        return sum;
+    }
+
+    public static void printAllEmployeesDepartment(int department) {
+        for (Employee i : employees) {
+            if (department == i.getDepartment()) {
+                System.out.print(i.getFullName() + " ");
+                System.out.print(i.getSalary() + " ");
+                System.out.print(i.getId());
+                System.out.println();
+            }
+        }
+    }
+
+    public static void printAllEmployeesLessNumber(int number) {
+        for (Employee i : employees) {
+            if (number > i.getSalary()) {
+                System.out.print(i.getId() + " ");
+                System.out.print(i.getFullName() + " ");
+                System.out.print(i.getSalary());
+                System.out.println();
+            }
+        }
+    }
+
+    public static void printAllEmployeesMoreNumber(int number) {
+        for (Employee i : employees) {
+            if (number < i.getSalary()) {
+                System.out.print(i.getId() + " ");
+                System.out.print(i.getFullName() + " ");
+                System.out.print(i.getSalary());
+                System.out.println();
+            }
+        }
     }
 }
