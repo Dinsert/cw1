@@ -55,7 +55,6 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "fullName='" + fullName + '\'' +
-                ", department=" + department +
                 ", salary=" + salary +
                 ", id=" + id +
                 '}';
