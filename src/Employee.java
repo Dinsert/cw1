@@ -1,10 +1,10 @@
 import java.util.Objects;
 
 public class Employee {
+    private int id;
     private String fullName;
     private int department;
     private int salary;
-    private int id;
     private static int count;
 
     public Employee(String fullName, int department, int salary) {
@@ -43,12 +43,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return department == employee.department && salary == employee.salary && id == employee.id && Objects.equals(fullName, employee.fullName);
+        return id == employee.id && department == employee.department && salary == employee.salary && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, department, salary, id);
+        return Objects.hash(id, fullName, department, salary);
     }
 
     @Override

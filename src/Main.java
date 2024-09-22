@@ -17,17 +17,17 @@ public class Main {
 
     public static void main(String[] args) {
         printAllEmployees(employees);
-        System.out.println(calculateSpendSalary(employees));
+        System.out.println(calculateTheAmountOfSalaryCosts(employees));
         System.out.println(findEmployeeMinSalary(employees));
         System.out.println(findEmployeeMaxSalary(employees));
         System.out.println(calculateMiddleSalary(employees));
         printAllFullNameEmployees(employees);
-        System.out.println(calculateSpendSalaryIndex(employees));
+        System.out.println(calculateIndexedSalary(employees));
         System.out.println(findEmployeeMinSalaryDepartment(employees[3].getDepartment()));
         System.out.println(findEmployeeMaxSalaryDepartment(employees[1].getDepartment()));
-        System.out.println(calculateSpendSalaryDepartment(employees[0].getDepartment()));
+        System.out.println(calculateTheAverageSalaryForTheDepartment(employees[0].getDepartment()));
         System.out.println(calculateMiddleSalaryDepartment(employees[4].getDepartment()));
-        System.out.println(calculateSpendSalaryDepartmentIndex(employees[2].getDepartment()));
+        System.out.println(calculateTheAverageIndexedSalaryForTheDepartment(employees[2].getDepartment()));
         printAllEmployeesDepartment(employees[0].getDepartment());
         printAllEmployeesLessNumber(55000);
         printAllEmployeesMoreNumber(55000);
@@ -42,7 +42,7 @@ public class Main {
         return employee;
     }
 
-    public static int calculateSpendSalary(Employee[] employees) {
+    public static int calculateTheAmountOfSalaryCosts(Employee[] employees) {
         int sum = 0;
         for (Employee i : employees) {
             sum += i.getSalary();
@@ -77,7 +77,7 @@ public class Main {
 
 
     public static double calculateMiddleSalary(Employee[] employees) {
-        double all = calculateSpendSalary(employees);
+        double all = calculateTheAmountOfSalaryCosts(employees);
         all /= employees.length;
         return all;
     }
@@ -91,8 +91,8 @@ public class Main {
         return fullName;
     }
 
-    public static double calculateSpendSalaryIndex(Employee[] employees) {
-        double sum = calculateSpendSalary(employees);
+    public static double calculateIndexedSalary(Employee[] employees) {
+        double sum = calculateTheAmountOfSalaryCosts(employees);
         sum += sum * PERCENT;
         return sum;
     }
@@ -121,7 +121,7 @@ public class Main {
         return employee1;
     }
 
-    public static int calculateSpendSalaryDepartment(int department) {
+    public static int calculateTheAverageSalaryForTheDepartment(int department) {
         int sum = 0;
         for (Employee employee : employees) {
             if (department == employee.getDepartment()) {
@@ -144,8 +144,8 @@ public class Main {
         return all;
     }
 
-    public static double calculateSpendSalaryDepartmentIndex(int department) {
-        double sum = calculateSpendSalaryDepartment(department);
+    public static double calculateTheAverageIndexedSalaryForTheDepartment(int department) {
+        double sum = calculateTheAverageSalaryForTheDepartment(department);
         sum += sum * PERCENT;
         return sum;
     }
