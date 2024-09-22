@@ -22,7 +22,7 @@ public class Main {
         System.out.println(findEmployeeMaxSalary(employees));
         System.out.println(calculateMiddleSalary(employees));
         printAllFullNameEmployees(employees);
-        System.out.println(calculateSpendSalaryIndex());
+        System.out.println(calculateSpendSalaryIndex(employees));
         System.out.println(findEmployeeMinSalaryDepartment(employees[3].getDepartment()));
         System.out.println(findEmployeeMaxSalaryDepartment(employees[1].getDepartment()));
         System.out.println(calculateSpendSalaryDepartment(employees[0].getDepartment()));
@@ -91,11 +91,8 @@ public class Main {
         return fullName;
     }
 
-    public static double calculateSpendSalaryIndex() {
-        double sum = 0;
-        for (Employee employee : employees) {
-            sum += employee.getSalary();
-        }
+    public static double calculateSpendSalaryIndex(Employee[] employees) {
+        double sum = calculateSpendSalary(employees);
         sum += sum * PERCENT;
         return sum;
     }
@@ -125,11 +122,11 @@ public class Main {
     }
 
     public static int calculateSpendSalaryDepartment(int department) {
-
         int sum = 0;
         for (Employee employee : employees) {
-            if (department == employee.getDepartment())
+            if (department == employee.getDepartment()) {
                 sum += employee.getSalary();
+            }
         }
         return sum;
     }
@@ -156,7 +153,7 @@ public class Main {
     public static void printAllEmployeesDepartment(int department) {
         for (Employee employee : employees) {
             if (department == employee.getDepartment()) {
-                System.out.println(employee);
+                System.out.println(employee.toStringWithoutDepartment());
             }
         }
     }
@@ -164,10 +161,7 @@ public class Main {
     public static void printAllEmployeesLessNumber(int number) {
         for (Employee employee : employees) {
             if (number > employee.getSalary()) {
-                System.out.print(employee.getId() + " ");
-                System.out.print(employee.getFullName() + " ");
-                System.out.print(employee.getSalary());
-                System.out.println();
+                System.out.println(employee.toStringWithoutDepartment());
             }
         }
     }
@@ -175,10 +169,7 @@ public class Main {
     public static void printAllEmployeesMoreNumber(int number) {
         for (Employee employee : employees) {
             if (number < employee.getSalary()) {
-                System.out.print(employee.getId() + " ");
-                System.out.print(employee.getFullName() + " ");
-                System.out.print(employee.getSalary());
-                System.out.println();
+                System.out.println(employee.toStringWithoutDepartment());
             }
         }
     }

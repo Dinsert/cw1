@@ -5,7 +5,7 @@ public class Employee {
     private int department;
     private int salary;
     private int id;
-    private static int count = 0;
+    private static int count;
 
     public Employee(String fullName, int department, int salary) {
         this.fullName = fullName;
@@ -53,6 +53,15 @@ public class Employee {
 
     @Override
     public String toString() {
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
+                ", department=" + department +
+                ", salary=" + salary +
+                ", id=" + id +
+                '}';
+    }
+
+    public String toStringWithoutDepartment() {
         return "Employee{" +
                 "fullName='" + fullName + '\'' +
                 ", salary=" + salary +
