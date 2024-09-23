@@ -83,7 +83,7 @@ public class EmployeeBook {
         StringBuilder stringBuilder = new StringBuilder();
         for (Employee employee : employees) {
             if (employee != null) {
-                result = String.valueOf(stringBuilder.append(employee.getFullName() + " "));
+                result = stringBuilder.append(employee.getFullName() + "\n").toString();
             }
         }
         return result;
