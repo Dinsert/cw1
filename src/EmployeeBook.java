@@ -79,14 +79,13 @@ public class EmployeeBook {
     }
 
     public String getAllFullNameEmployees() {
-        String result = "";
         StringBuilder stringBuilder = new StringBuilder();
         for (Employee employee : employees) {
             if (employee != null) {
-                result = stringBuilder.append(employee.getFullName() + "\n").toString();
+                stringBuilder.append(employee.getFullName()).append("\n");
             }
         }
-        return result;
+        return stringBuilder.toString();
 
     }
 
