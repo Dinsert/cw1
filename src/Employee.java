@@ -1,8 +1,8 @@
 import java.util.Objects;
 
 public class Employee {
-    private int id;
-    private String fullName;
+    private final int id;
+    private final String fullName;
     private int department;
     private int salary;
     private static int count;
