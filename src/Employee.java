@@ -22,20 +22,20 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
-        return salary;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public void setDepartment(int department) {
         this.department = department;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

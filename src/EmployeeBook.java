@@ -1,11 +1,8 @@
 public class EmployeeBook {
     private final Employee[] employees = new Employee[10];
-    private final static double PERCENT_INCREASE;
     private final static double PERCENT_VALUE = 1d;
+    private final static double PERCENT_INCREASE = 1 + PERCENT_VALUE / 100;
 
-    static {
-        PERCENT_INCREASE = 1 + PERCENT_VALUE / 100;
-    }
 
     private int counterEmployees() {
         int count = 0;
@@ -27,13 +24,14 @@ public class EmployeeBook {
         return null;
     }
 
-    public Employee removeEmployee(int id) {
+    public boolean removeEmployee(int id) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null && id == employees[i].getId()) {
-                return employees[i] = null;
+                employees[i] = null;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public Employee getEmployeeById(int id) {
@@ -65,10 +63,12 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMinSalary() {
         Employee result = null;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && employees[i].getSalary() < employees[0].getSalary() || employees[i] == employees[0]) {
-                employees[0] = employees[i];
-                result = employees[i];
+        if (employees.length > 0) {
+            result = employees[0];
+            for (int i = 1; i < employees.length; i++) {
+                if (employees[i].getSalary() < result.getSalary()) {
+                    result = employees[i];
+                }
             }
         }
         return result;
@@ -76,10 +76,12 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMaxSalary() {
         Employee result = null;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && employees[i].getSalary() > employees[0].getSalary() || employees[i] == employees[0]) {
-                employees[0] = employees[i];
-                result = employees[i];
+        if (employees.length > 0) {
+            result = employees[0];
+            for (int i = 1; i < employees.length; i++) {
+                if (employees[i].getSalary() > result.getSalary()) {
+                    result = employees[i];
+                }
             }
         }
         return result;
@@ -87,7 +89,8 @@ public class EmployeeBook {
 
 
     public double calculateAverageSalaryAllEmployees() {
-        return counterEmployees() != 0 ? calculateAmountOfSalaryCosts() / counterEmployees() : 0.0;
+        int count = counterEmployees();
+        return count != 0 ? calculateAmountOfSalaryCosts() / count : 0.0;
     }
 
     public String getAllFullNameEmployees() {
@@ -107,10 +110,12 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMinSalaryByDepartment(int department) {
         Employee result = null;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && department == employees[i].getDepartment() && employees[i].getSalary() < employees[department - 1].getSalary() || employees[i] == employees[department - 1]) {
-                employees[department - 1] = employees[i];
-                result = employees[i];
+        if (employees.length > 0) {
+            result = employees[department - 1];
+            for (int i = 0; i < employees.length; i++) {
+                if (department == employees[i].getDepartment() && employees[i].getSalary() < result.getSalary()) {
+                    result = employees[i];
+                }
             }
         }
         return result;
@@ -118,10 +123,12 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMaxSalaryByDepartment(int department) {
         Employee result = null;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && department == employees[i].getDepartment() && employees[i].getSalary() > employees[department - 1].getSalary() || employees[i] == employees[department - 1]) {
-                employees[department - 1] = employees[i];
-                result = employees[i];
+        if (employees.length > 0) {
+            result = employees[department - 1];
+            for (int i = 0; i < employees.length; i++) {
+                if (department == employees[i].getDepartment() && employees[i].getSalary() > result.getSalary()) {
+                    result = employees[i];
+                }
             }
         }
         return result;
