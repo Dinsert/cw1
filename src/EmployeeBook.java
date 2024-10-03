@@ -165,7 +165,7 @@ public class EmployeeBook {
         return count != 0 ? all / count : 0.0;
     }
 
-    public double getTotalIndexedSalaryForDepartment(int department) {
+    public double getTotalIndexedSalaryByDepartment(int department) {
         return getTotalEmployeeSalariesByDepartment(department) * PERCENT_INCREASE;
     }
 

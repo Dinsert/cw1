@@ -1,11 +1,12 @@
 import java.util.Objects;
 
 public class Employee {
+
+    private static int counter;
     private final int id;
     private final String fullName;
     private int department;
     private int salary;
-    private static int counter;
 
     public Employee(String fullName, int department, int salary) {
         this.fullName = fullName;
