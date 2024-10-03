@@ -5,13 +5,13 @@ public class Employee {
     private final String fullName;
     private int department;
     private int salary;
-    private static int count;
+    private static int counter;
 
     public Employee(String fullName, int department, int salary) {
         this.fullName = fullName;
         this.department = department;
         this.salary = salary;
-        this.id = ++count;
+        this.id = ++counter;
     }
 
     public String getFullName() {
@@ -40,8 +40,12 @@ public class Employee {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Employee employee = (Employee) o;
         return id == employee.id && department == employee.department && salary == employee.salary && Objects.equals(fullName, employee.fullName);
     }
