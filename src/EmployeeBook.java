@@ -64,14 +64,9 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMinSalary() {
         Employee result = null;
-        for (int i = 1; i < employees.length; i++) {
-            Employee employee = employees[i];
-            if (result == null && nonNull(employee)) {
+        for (Employee employee : employees) {
+            if (nonNull(employee) && (result == null || employee.getSalary() < result.getSalary())) {
                 result = employee;
-                continue;
-            }
-            if (nonNull(employee) && employee.getSalary() < result.getSalary()) {
-                result = employees[i];
             }
         }
         return result;
@@ -79,14 +74,9 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMaxSalary() {
         Employee result = null;
-        for (int i = 1; i < employees.length; i++) {
-            Employee employee = employees[i];
-            if (result == null && nonNull(employee)) {
+        for (Employee employee : employees) {
+            if (nonNull(employee) && (result == null || employee.getSalary() > result.getSalary())) {
                 result = employee;
-                continue;
-            }
-            if (nonNull(employee) && employee.getSalary() > result.getSalary()) {
-                result = employees[i];
             }
         }
         return result;
@@ -115,14 +105,9 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMinSalaryByDepartment(int department) {
         Employee result = null;
-        for (int i = 0; i < employees.length; i++) {
-            Employee employee = employees[i];
-            if (result == null && nonNull(employee) && department == employee.getDepartment()) {
+        for (Employee employee : employees) {
+            if (nonNull(employee) && (result == null && department == employee.getDepartment() || department == employee.getDepartment() && employee.getSalary() < result.getSalary())) {
                 result = employee;
-                continue;
-            }
-            if (nonNull(employee) && department == employee.getDepartment() && employee.getSalary() < result.getSalary()) {
-                result = employees[i];
             }
         }
         return result;
@@ -130,14 +115,9 @@ public class EmployeeBook {
 
     public Employee findEmployeeWithMaxSalaryByDepartment(int department) {
         Employee result = null;
-        for (int i = 0; i < employees.length; i++) {
-            Employee employee = employees[i];
-            if (result == null && nonNull(employee) && department == employee.getDepartment()) {
+        for (Employee employee : employees) {
+            if (nonNull(employee) && (result == null && department == employee.getDepartment() || department == employee.getDepartment() && employee.getSalary() > result.getSalary())) {
                 result = employee;
-                continue;
-            }
-            if (nonNull(employee) && department == employee.getDepartment() && employee.getSalary() > result.getSalary()) {
-                result = employees[i];
             }
         }
         return result;
