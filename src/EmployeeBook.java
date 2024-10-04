@@ -107,7 +107,8 @@ public class EmployeeBook {
     public Employee findEmployeeWithMinSalaryByDepartment(int department) {
         Employee result = null;
         for (Employee employee : employees) {
-            if (nonNull(employee) && (result == null && department == employee.getDepartment() || department == employee.getDepartment() && employee.getSalary() < result.getSalary())) {
+            if (nonNull(employee) && department == employee.getDepartment()
+                    && (result == null || employee.getSalary() < result.getSalary())) {
                 result = employee;
             }
         }
@@ -117,7 +118,8 @@ public class EmployeeBook {
     public Employee findEmployeeWithMaxSalaryByDepartment(int department) {
         Employee result = null;
         for (Employee employee : employees) {
-            if (nonNull(employee) && (result == null && department == employee.getDepartment() || department == employee.getDepartment() && employee.getSalary() > result.getSalary())) {
+            if (nonNull(employee) && department == employee.getDepartment()
+                    && (result == null || employee.getSalary() > result.getSalary())) {
                 result = employee;
             }
         }
