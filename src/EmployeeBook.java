@@ -16,13 +16,14 @@ public class EmployeeBook {
         return count;
     }
 
-    public Employee createNewEmployee(String fullName, int department, int salary) {
+    public boolean createNewEmployee(String fullName, int department, int salary) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
-                return employees[i] = new Employee(fullName, department, salary);
+                employees[i] = new Employee(fullName, department, salary);
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public boolean removeEmployee(int id) {

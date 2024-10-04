@@ -13,7 +13,7 @@ public class Main {
         employeeBook.createNewEmployee("Ivanov9 Ivan9 Ivanovich9", 4, 90_000);
         employeeBook.createNewEmployee("Ivanov10 Ivan10 Ivanovich10", 5, 100_000);
 
-        if (employeeBook.createNewEmployee("", 1, 1) == null) {
+        if (!employeeBook.createNewEmployee(null, 0, 0)) {
             System.out.println("хранилище заполнено");
         }
 
